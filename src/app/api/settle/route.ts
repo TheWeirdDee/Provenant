@@ -4,7 +4,8 @@ const TATUM_KEY     = process.env.TATUM_API_KEY!;
 const AGENT_KEY     = process.env.AGENT_PRIVATE_KEY!;
 const PACKAGE_ID    = process.env.PROVENANT_PACKAGE_ID!;
 const DELEGATION_ID = process.env.DELEGATION_OBJECT_ID!;
-const NETWORK       = process.env.SUI_NETWORK ?? 'testnet';
+const REGISTRY_ID   = process.env.AGENT_REGISTRY_ID!;
+const NETWORK       = (process.env.SUI_NETWORK ?? 'testnet') as 'testnet' | 'mainnet';
 
 const USDC_TYPE  = '0xa1ec7fc00a6f40db9693ad1415d0c193ad3906494428cf252621037bd7117e29::usdc::USDC';
 const CLOCK_ID   = '0x0000000000000000000000000000000000000000000000000000000000000006';
@@ -51,7 +52,7 @@ export async function POST() {
     const { Transaction }      = await import('@mysten/sui/transactions');
 
     const keypair = Ed25519Keypair.fromSecretKey(AGENT_KEY);
-    const client  = new SuiJsonRpcClient({ url: PUBLIC_RPC });
+    const client  = new SuiJsonRpcClient({ network: NETWORK, url: PUBLIC_RPC });
     const sender  = keypair.getPublicKey().toSuiAddress();
 
     const tx = new Transaction();
@@ -60,7 +61,7 @@ export async function POST() {
     tx.moveCall({
       target:        `${PACKAGE_ID}::escrow::verify_and_settle`,
       typeArguments: [USDC_TYPE],
-      arguments:     [tx.object(DELEGATION_ID), tx.object(CLOCK_ID)],
+      arguments:     [tx.object(DELEGATION_ID), tx.object(REGISTRY_ID), tx.object(CLOCK_ID)],
     });
 
     const bytes  = await tx.build({ client });
