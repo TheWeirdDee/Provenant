@@ -1,0 +1,27 @@
+{
+  "name": "@provenant/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "preflight": "tsx src/preflight.ts",
+    "create-delegation": "tsx src/create_delegation.ts",
+    "agent": "tsx src/agent.ts",
+    "verify-and-settle": "tsx src/verify_and_settle.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.54.0",
+    "@mysten/seal": "^1.1.3",
+    "@mysten/sui": "^2.17.0",
+    "@noble/hashes": "^1.7.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+[package]
+name = "provenant"
+edition = "2024"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "testnet-v1.73.0" }
+
+[addresses]
+provenant = "0x0"
