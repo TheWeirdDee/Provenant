@@ -388,6 +388,120 @@ export default function LandingPage() {
         </motion.div>{/* /card */}
       </section>
 
+      {/* ── THE PROBLEM ───────────────────────────────────────────────────── */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="mb-14 space-y-4 max-w-3xl">
+          <SectionLabel>The problem</SectionLabel>
+          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 leading-tight">
+            AI agents are getting real budgets.<br className="hidden sm:block" /> The accountability hasn&apos;t caught up.
+          </h2>
+        </FadeUp>
+
+        <div className="max-w-3xl space-y-6">
+          {[
+            'DAOs are paying agents to manage treasury. Protocols are using agents to execute trades. Teams are automating financial decisions worth thousands of dollars.',
+            'When something goes wrong — a bad trade, a missed action, an unauthorized call — all you have is the agent\'s own logs. The agent is the only witness to its own behavior.',
+            'Screenshots and self-reported logs are fragile and gameable. There is no cryptographic proof that the agent did what it claims.',
+          ].map((para, i) => (
+            <FadeUp key={i} delay={i * 0.1}>
+              <p className={`text-base leading-relaxed ${i === 1 ? 'text-zinc-300' : 'text-zinc-500'}`}>
+                {para}
+              </p>
+            </FadeUp>
+          ))}
+        </div>
+      </section>
+
+      {/* ── WITHOUT vs WITH ───────────────────────────────────────────────── */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="text-center mb-14 space-y-3">
+          <SectionLabel>The trust gap</SectionLabel>
+          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">Without Provenant vs With Provenant</h2>
+        </FadeUp>
+
+        <FadeUp>
+          <div className="grid sm:grid-cols-2 gap-px rounded-2xl overflow-hidden"
+            style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
+
+            {/* Left — Without */}
+            <div className="bg-zinc-950/80 p-8 sm:p-10">
+              <p className="text-sm font-semibold text-zinc-600 uppercase tracking-widest mb-8">Without Provenant</p>
+              <ul className="space-y-5">
+                {[
+                  'Agent executes task',
+                  'Returns a log file',
+                  'You hope the reasoning was sound',
+                  'You pay or dispute manually',
+                  'No on-chain record',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-zinc-500">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-red-950/50 border border-red-900/50 flex items-center justify-center text-[11px] font-bold text-red-500">✗</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right — With */}
+            <div className="p-8 sm:p-10" style={{ background: 'rgba(49,46,129,0.15)' }}>
+              <p className="text-sm font-semibold text-indigo-400 uppercase tracking-widest mb-8">With Provenant</p>
+              <ul className="space-y-5">
+                {[
+                  'Agent commits every decision on-chain before acting',
+                  'Each node is encrypted and stored on Walrus',
+                  'You inspect the proof and decrypt any node',
+                  'Escrow releases only when the trail verifies',
+                  'Permanent, tamper-evident record',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-green-950/60 border border-green-800/60 flex items-center justify-center text-[11px] font-bold text-green-400">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FadeUp>
+      </section>
+
+      {/* ── REAL SCENARIO ─────────────────────────────────────────────────── */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="mb-14 space-y-3">
+          <SectionLabel>What it looks like in practice</SectionLabel>
+          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">A real delegation. A real proof trail.</h2>
+        </FadeUp>
+
+        <FadeUp delay={0.1}>
+          <GlassCard className="p-8 sm:p-10" hover={false}>
+            <p className="text-base text-zinc-400 leading-relaxed max-w-3xl">
+              An agent was delegated a treasury analysis task with{' '}
+              <span className="text-zinc-200 font-medium">1 USDC held in escrow</span>. It read the portfolio
+              via Tatum MCP, analyzed the composition{' '}
+              <span className="text-zinc-200 font-medium">(13% SUI / 87% USDC)</span>, and recommended buying
+              SUI to reach a 30/70 target. Every step was committed as an encrypted decision node on Walrus
+              before the agent moved to the next action. The principal opened the Inspector, decrypted each
+              node privately, verified every commitment hash matched its blob, and approved. The escrow
+              released.
+            </p>
+            <p className="mt-6 text-base text-zinc-200 font-medium">
+              The agent got paid because it could prove how it decided.
+            </p>
+            <div className="mt-8">
+              <Link href="/inspector">
+                <motion.span
+                  whileHover={{ scale: 1.03, boxShadow: '0 0 28px -4px rgba(99,102,241,0.6)' }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-colors shadow-lg shadow-indigo-900/30"
+                >
+                  See the live proof trail
+                  <ArrowUpRight size={15} />
+                </motion.span>
+              </Link>
+            </div>
+          </GlassCard>
+        </FadeUp>
+      </section>
+
       {/* ── How it works ──────────────────────────────────────────────────── */}
       <section id="how-it-works" className="py-24 px-6 max-w-6xl mx-auto">
         <FadeUp className="text-center mb-14 space-y-3">
