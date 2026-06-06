@@ -256,7 +256,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3, ease }}
-              className="mb-8 flex items-center gap-2.5 text-xs text-zinc-400"
+              className="mb-5 sm:mb-8 flex items-center gap-2.5 text-xs text-zinc-400"
             >
               <div className="flex -space-x-1.5">
                 {['#6366f1', '#818cf8', '#a5b4fc'].map((c, i) => (
@@ -270,14 +270,14 @@ export default function LandingPage() {
             </motion.div>
 
             {/* Headline — two tight lines like Fluxio */}
-            <div className="max-w-3xl mx-auto mb-6">
+            <div className="max-w-3xl mx-auto mb-4 sm:mb-6">
               {[
                 { text: 'Proof-gated escrow.', accent: false },
                 { text: 'Agents prove every decision.', accent: true },
               ].map(({ text, accent }, i) => (
                 <motion.h1
                   key={text}
-                  className={`block text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight ${
+                  className={`block text-3xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight ${
                     accent ? 'text-indigo-400' : 'text-zinc-50'
                   }`}
                   initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
@@ -294,7 +294,7 @@ export default function LandingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.62, ease }}
-              className="text-base text-zinc-500 max-w-sm mx-auto leading-relaxed mb-8"
+              className="text-sm sm:text-base text-zinc-500 max-w-sm mx-auto leading-relaxed mb-5 sm:mb-8"
             >
               Every decision is encrypted, stored on Walrus, and committed on-chain.
               Settlement only unlocks when the trail checks out.
@@ -311,7 +311,7 @@ export default function LandingPage() {
                 <motion.span
                   whileHover={{ scale: 1.04, boxShadow: '0 0 32px -4px rgba(99,102,241,0.7)' }}
                   whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-colors shadow-xl shadow-indigo-900/40"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm transition-colors shadow-xl shadow-indigo-900/40"
                 >
                   Open Inspector
                   <ArrowUpRight size={15} />
@@ -321,7 +321,7 @@ export default function LandingPage() {
                 <motion.span
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-zinc-300 font-medium text-sm transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-5 sm:py-3 rounded-xl text-zinc-300 font-medium text-xs sm:text-sm transition-all"
                   style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
                   View Contract
@@ -332,10 +332,9 @@ export default function LandingPage() {
           </div>{/* /content */}
 
           {/* ── Concentric arc orbs (Fluxio-style, indigo palette) ────────── */}
-          {/* negative marginTop pulls the orb up behind the CTA buttons; card overflow-hidden clips outside */}
-          <div className="relative flex-shrink-0 z-0" style={{ height: '420px', marginTop: '-320px' }}>
-            {/* Fade from card bg into arcs — blends the overlap with content above */}
-            <div className="absolute inset-x-0 top-0 h-64 pointer-events-none z-10"
+          <div className="relative flex-shrink-0 z-0 h-[220px] sm:h-[420px] -mt-[160px] sm:-mt-[320px]">
+            {/* Fade from card bg into arcs */}
+            <div className="absolute inset-x-0 top-0 h-28 sm:h-64 pointer-events-none z-10"
               style={{ background: 'linear-gradient(to bottom, #080810 40%, transparent)' }} />
 
             {/* Rings — outermost → innermost, each a clipped ellipse */}
@@ -368,7 +367,7 @@ export default function LandingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.85, ease }}
-              className="absolute inset-x-0 flex justify-center gap-2 z-20" style={{ top: '300px' }}
+              className="absolute inset-x-0 flex justify-center gap-2 z-20 top-[148px] sm:top-[300px]"
             >
               {[
                 { label: 'pkg',  value: short(PACKAGE_ID, 8) },
@@ -389,8 +388,8 @@ export default function LandingPage() {
       </section>
 
       {/* ── THE PROBLEM ───────────────────────────────────────────────────── */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <FadeUp className="mb-14 space-y-4 max-w-3xl">
+      <section className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="mb-8 sm:mb-14 space-y-4 max-w-3xl">
           <SectionLabel>The problem</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 leading-tight">
             AI agents are getting real budgets.<br className="hidden sm:block" /> The accountability hasn&apos;t caught up.
@@ -413,8 +412,8 @@ export default function LandingPage() {
       </section>
 
       {/* ── WITHOUT vs WITH ───────────────────────────────────────────────── */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <FadeUp className="text-center mb-14 space-y-3">
+      <section className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="text-center mb-8 sm:mb-14 space-y-3">
           <SectionLabel>The trust gap</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">Without Provenant vs With Provenant</h2>
         </FadeUp>
@@ -465,8 +464,8 @@ export default function LandingPage() {
       </section>
 
       {/* ── REAL SCENARIO ─────────────────────────────────────────────────── */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <FadeUp className="mb-14 space-y-3">
+      <section className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="mb-8 sm:mb-14 space-y-3">
           <SectionLabel>What it looks like in practice</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">A real delegation. A real proof trail.</h2>
         </FadeUp>
@@ -503,8 +502,8 @@ export default function LandingPage() {
       </section>
 
       {/* ── How it works ──────────────────────────────────────────────────── */}
-      <section id="how-it-works" className="py-24 px-6 max-w-6xl mx-auto">
-        <FadeUp className="text-center mb-14 space-y-3">
+      <section id="how-it-works" className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="text-center mb-8 sm:mb-14 space-y-3">
           <SectionLabel>How it works</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">Three steps. One proof.</h2>
         </FadeUp>
@@ -547,8 +546,8 @@ export default function LandingPage() {
       </section>
 
       {/* ── Live demo ─────────────────────────────────────────────────────── */}
-      <section id="demo" className="py-24 px-6 max-w-6xl mx-auto">
-        <FadeUp className="text-center mb-14 space-y-3">
+      <section id="demo" className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
+        <FadeUp className="text-center mb-8 sm:mb-14 space-y-3">
           <SectionLabel>Live demo</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">Real delegation. Real USDC. Settled.</h2>
         </FadeUp>
@@ -652,7 +651,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Built on ──────────────────────────────────────────────────────── */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
+      <section className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
         <FadeUp className="text-center mb-4 space-y-3">
           <SectionLabel>Built on</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50">The stack is load-bearing.</h2>
@@ -707,7 +706,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Feature cards ─────────────────────────────────────────────────── */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
+      <section className="py-12 sm:py-24 px-6 max-w-6xl mx-auto">
         <div className="grid sm:grid-cols-3 gap-5">
           <FeatureCard
             icon={ShieldCheck} delay={0}
@@ -729,7 +728,7 @@ export default function LandingPage() {
 
       {/* ── Footer (CONVERTO-inspired) ─────────────────────────────────────── */}
       <footer className="border-t border-white/[0.05] bg-[#030307]/60 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 pt-16 pb-0">
+        <div className="max-w-6xl mx-auto px-6 pt-10 sm:pt-16 pb-0">
           {/* Footer top grid */}
           <div className="grid sm:grid-cols-4 gap-10 pb-16">
             {/* Brand */}
