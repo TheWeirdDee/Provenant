@@ -203,7 +203,7 @@ function SectionLabel({ children }: { children: string }) {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen text-zinc-50 overflow-x-hidden">
+    <div className="min-h-screen text-zinc-50" style={{ overflowX: 'clip' }}>
       <Background />
 
       {/* ── Hero — Fluxio-style card with inner nav + arc orbs ────────────── */}
@@ -332,20 +332,21 @@ export default function LandingPage() {
           </div>{/* /content */}
 
           {/* ── Concentric arc orbs (Fluxio-style, indigo palette) ────────── */}
-          <div className="relative overflow-hidden flex-shrink-0" style={{ height: '260px' }}>
-            {/* Fade transition from card bg into arcs */}
-            <div className="absolute inset-x-0 top-0 h-20 pointer-events-none z-10"
-              style={{ background: 'linear-gradient(to bottom, #080810, transparent)' }} />
+          {/* negative marginTop pulls the orb up behind the CTA buttons; card overflow-hidden clips outside */}
+          <div className="relative flex-shrink-0 z-0" style={{ height: '300px', marginTop: '-120px' }}>
+            {/* Fade from card bg into arcs — blends the overlap with content above */}
+            <div className="absolute inset-x-0 top-0 h-32 pointer-events-none z-10"
+              style={{ background: 'linear-gradient(to bottom, #080810 30%, transparent)' }} />
 
             {/* Rings — outermost → innermost, each a clipped ellipse */}
             {[
-              { w: '130%', h: '560px', bot: '-390px', bg: 'rgba(28,25,72,0.98)',   bdr: 'rgba(55,48,163,0.22)' },
-              { w: '108%', h: '510px', bot: '-365px', bg: 'rgba(46,42,122,0.90)',  bdr: 'rgba(79,70,229,0.32)' },
-              { w: '88%',  h: '460px', bot: '-340px', bg: 'rgba(64,54,194,0.80)',  bdr: 'rgba(99,102,241,0.45)' },
-              { w: '70%',  h: '415px', bot: '-318px', bg: 'rgba(85,72,215,0.72)',  bdr: 'rgba(129,140,248,0.55)' },
-              { w: '54%',  h: '370px', bot: '-298px', bg: 'rgba(106,90,228,0.68)', bdr: 'rgba(165,180,252,0.65)' },
-              { w: '38%',  h: '325px', bot: '-278px', bg: 'rgba(126,120,238,0.65)',bdr: 'rgba(199,210,254,0.75)' },
-              { w: '24%',  h: '280px', bot: '-260px', bg: 'rgba(160,160,245,0.70)',bdr: 'rgba(224,231,255,0.85)' },
+              { w: '143%', h: '560px', bot: '-390px', bg: 'rgba(28,25,72,0.68)',   bdr: 'rgba(55,48,163,0.15)' },
+              { w: '119%', h: '510px', bot: '-365px', bg: 'rgba(46,42,122,0.63)',  bdr: 'rgba(79,70,229,0.22)' },
+              { w: '97%',  h: '460px', bot: '-340px', bg: 'rgba(64,54,194,0.56)',  bdr: 'rgba(99,102,241,0.31)' },
+              { w: '77%',  h: '415px', bot: '-318px', bg: 'rgba(85,72,215,0.50)',  bdr: 'rgba(129,140,248,0.38)' },
+              { w: '59%',  h: '370px', bot: '-298px', bg: 'rgba(106,90,228,0.47)', bdr: 'rgba(165,180,252,0.45)' },
+              { w: '42%',  h: '325px', bot: '-278px', bg: 'rgba(126,120,238,0.45)',bdr: 'rgba(199,210,254,0.52)' },
+              { w: '26%',  h: '280px', bot: '-260px', bg: 'rgba(160,160,245,0.48)',bdr: 'rgba(224,231,255,0.60)' },
             ].map((ring, i) => (
               <motion.div
                 key={i}
@@ -362,12 +363,12 @@ export default function LandingPage() {
               />
             ))}
 
-            {/* Address chips floating above arcs */}
+            {/* Address chips — positioned below the CTA overlap zone */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.85, ease }}
-              className="absolute top-5 inset-x-0 flex justify-center gap-2 z-20"
+              className="absolute inset-x-0 flex justify-center gap-2 z-20" style={{ top: '148px' }}
             >
               {[
                 { label: 'pkg',  value: short(PACKAGE_ID, 8) },
