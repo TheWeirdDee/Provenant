@@ -333,10 +333,10 @@ export default function LandingPage() {
 
           {/* ── Concentric arc orbs (Fluxio-style, indigo palette) ────────── */}
           {/* negative marginTop pulls the orb up behind the CTA buttons; card overflow-hidden clips outside */}
-          <div className="relative flex-shrink-0 z-0" style={{ height: '300px', marginTop: '-120px' }}>
+          <div className="relative flex-shrink-0 z-0" style={{ height: '420px', marginTop: '-320px' }}>
             {/* Fade from card bg into arcs — blends the overlap with content above */}
-            <div className="absolute inset-x-0 top-0 h-32 pointer-events-none z-10"
-              style={{ background: 'linear-gradient(to bottom, #080810 30%, transparent)' }} />
+            <div className="absolute inset-x-0 top-0 h-64 pointer-events-none z-10"
+              style={{ background: 'linear-gradient(to bottom, #080810 40%, transparent)' }} />
 
             {/* Rings — outermost → innermost, each a clipped ellipse */}
             {[
@@ -368,7 +368,7 @@ export default function LandingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.85, ease }}
-              className="absolute inset-x-0 flex justify-center gap-2 z-20" style={{ top: '148px' }}
+              className="absolute inset-x-0 flex justify-center gap-2 z-20" style={{ top: '300px' }}
             >
               {[
                 { label: 'pkg',  value: short(PACKAGE_ID, 8) },
